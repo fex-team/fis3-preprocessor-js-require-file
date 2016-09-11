@@ -19,7 +19,9 @@ module.exports = function(content, file, options) {
 
     var type = "uri";
 
-    if (options.useEmbedWhenSizeLessThan) {
+    if (target.isJsonLike && options.embedJson) {
+      type = "embed";
+    } else if (options.useEmbedWhenSizeLessThan) {
       var size = fs.statSync(target.realpath).size;
 
       if (size < options.useEmbedWhenSizeLessThan) {
@@ -34,7 +36,8 @@ module.exports = function(content, file, options) {
 
 
 module.exports.defaultOptions = {
+  embedJson: true
 
   // 当文件小于 20k 的时候，使用内嵌的方式。
-  useEmbedWhenSizeLessThan: 20 * 1024 * 1024
+  useEmbedWhenSizeLessThan: 20 * 1024
 }
