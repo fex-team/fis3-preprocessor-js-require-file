@@ -21,6 +21,7 @@ module.exports = function(content, file, options) {
 
     if (target.isJsonLike && options.embedJson) {
       type = "embed";
+      return lang[type].wrap(value);
     } else if (options.useEmbedWhenSizeLessThan) {
       var size = fs.statSync(target.realpath).size;
 
