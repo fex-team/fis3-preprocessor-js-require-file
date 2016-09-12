@@ -36,7 +36,7 @@ module.exports = function(content, file, options) {
 
 
 module.exports.defaultOptions = {
-  embedJson: true
+  embedJson: true,
 
   // 当文件小于 20k 的时候，使用内嵌的方式。
   useEmbedWhenSizeLessThan: 20 * 1024
